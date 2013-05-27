@@ -14,11 +14,10 @@ io.on("disconnect", function(){
 });
 
 var send = function(){
-  ts.write({
-    type:    "chat",
-    name:    $("#name").val(),
-    message: $("#message").val()
-  });
+  var name = $("#name").val();
+  var message = $("#message").val();
+  if(message.length < 1 || name.length < 1) return;
+  ts.write({type: "chat", name: name, message: message});
   $("#message").val("");
 };
 
